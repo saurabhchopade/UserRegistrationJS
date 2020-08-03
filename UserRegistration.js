@@ -1,8 +1,9 @@
 ///Packege00
 const prompt = require('prompt-sync')();
 //Regx patterns
-const firstNameRegx = "^[A-Z]{1}[a-z]{2,}$";
-const lastNameRegx = "^[A-Z]{1}[a-z]{2,}$";
+const firstNameRegx = /^[A-Z]{1}[a-z]{2,}$/;
+const lastNameRegx = /^[A-Z]{1}[a-z]{2,}$/;
+const emailRegx = /^[a-z0-9]+[\.\-\+]?[a-z0-9]+[\@][a-z0-9]{1,}[\.][a-z]+([\.]?[a-z]+)$/;
 
 	function checkRegx(validate, regx){
  		if(validate.match(regx)){
@@ -17,7 +18,8 @@ const lastNameRegx = "^[A-Z]{1}[a-z]{2,}$";
 		console.log("\n====Select one option====");
 		console.log("1 validate firstname");
 		console.log("2 validate lastname");
-		console.log("3 EXIT");
+		console.log("3 validate email");
+		console.log("4 EXIT");
 
 		let choice = prompt("\nEnter your choice =");
 		switch(choice){
@@ -29,7 +31,11 @@ const lastNameRegx = "^[A-Z]{1}[a-z]{2,}$";
 				let  lastName = prompt("Enter lastname =");
             checkRegx(lastName, lastNameRegx);
 				break;
-			case "3": 
+			 case "3":
+            let  email = prompt("Enter email =");
+            checkRegx(email, emailRegx);
+            break;
+			case "4":
 				return false;
 			default:
 				console.log("\nInvalid Choice")
